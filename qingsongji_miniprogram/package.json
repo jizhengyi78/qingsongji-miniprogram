@@ -1,0 +1,32 @@
+{
+  "name": "qingsongji-miniprogram",
+  "version": "1.0.0",
+  "description": "轻松记 - 个人记账本Mini App",
+  "main": "app.js",
+  "scripts": {
+    "dev": "微信开发者工具",
+    "build": "微信开发者工具",
+    "test": "jest"
+  },
+  "keywords": [
+    "微信小程序",
+    "记账",
+    "财务管理",
+    "云开发"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "miniprogram-api-typings": "^3.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/qingsongji-miniprogram.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,59 @@
+<!-- 统计页面 -->
+<view class="container">
+  <!-- 月份选择 -->
+  <view class="card mb-20">
+    <picker mode="date" fields="month" value="{{currentMonth}}" bindchange="onMonthChange">
+      <view class="month-picker">
+        <text class="month-text">{{formatMonth(currentMonth)}}</text>
+        <i class="fas fa-chevron-down"></i>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 月度汇总 -->
+  <view class="card mb-20" wx:if="{{stats}}">
+    <view class="stats-grid">
+      <view class="stats-item">
+        <text class="stats-label">本月收入</text>
+        <text class="stats-value income">¥{{stats.income.toFixed(2)}}</text>
+      </view>
+      <view class="stats-item">
+        <text class="stats-label">本月支出</text>
+        <text class="stats-value expense">¥{{stats.expense.toFixed(2)}}</text>
+      </view>
+      <view class="stats-item">
+        <text class="stats-label">本月结余</text>
+        <text class="stats-value {{stats.balance >= 0 ? 'income' : 'expense'}}">¥{{stats.balance.toFixed(2)}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类统计图表 -->
+  <view class="card mb-20" wx:if="{{categoryStats.length > 0}}">
+    <text class="card-title">支出分类占比</text>
+    <ec-canvas id="categoryChart" canvas-id="category-canvas" ec="{{categoryChart}}"></ec-canvas>
+  </view>
+
+  <!-- 分类明细 -->
+  <view class="card mb-20" wx:if="{{categoryStats.length > 0}}">
+    <text class="card-title">分类明细</text>
+    <view class="category-list">
+      <view class="category-item" wx:for="{{categoryStats}}" wx:key="category">
+        <view class="category-info">
+          <text class="category-icon">{{getCategoryIcon(item.category)}}</text>
+          <text class="category-name">{{getCategoryName(item.category)}}</text>
+        </view>
+        <view class="category-amount">
+          <text>¥{{item.amount.toFixed(2)}}</text>
+          <text class="category-percent">{{item.percent}}%</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!stats || stats.total === 0}}">
+    <i class="fas fa-chart-pie empty-icon"></i>
+    <text class="empty-text">暂无统计数据\n快去记一笔吧~</text>
+  </view>
+</view>

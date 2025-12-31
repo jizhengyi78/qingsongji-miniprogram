@@ -1,0 +1,192 @@
+/* 账单页面样式 */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  padding: 20rpx 30rpx;
+}
+
+.search-icon {
+  font-size: 32rpx;
+  color: #95a5a6;
+  margin-right: 20rpx;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 32rpx;
+  border: none;
+  background: transparent;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 20rpx;
+}
+
+.filter-tab {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #7f8c8d;
+  border-radius: 8rpx;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.filter-tab.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30rpx;
+}
+
+.summary-item {
+  text-align: center;
+}
+
+.summary-label {
+  font-size: 24rpx;
+  color: #7f8c8d;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.summary-value {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.summary-value.income {
+  color: #27ae60;
+}
+
+.summary-value.expense {
+  color: #e74c3c;
+}
+
+.bill-list {
+  margin-top: 20rpx;
+}
+
+.bill-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.bill-item:active {
+  transform: scale(0.98);
+}
+
+.bill-icon {
+  font-size: 48rpx;
+  margin-right: 20rpx;
+  width: 60rpx;
+  text-align: center;
+}
+
+.bill-info {
+  flex: 1;
+}
+
+.bill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.bill-category {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.bill-amount {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.bill-amount.income {
+  color: #27ae60;
+}
+
+.bill-amount.expense {
+  color: #e74c3c;
+}
+
+.bill-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bill-date {
+  font-size: 24rpx;
+  color: #95a5a6;
+}
+
+.bill-account {
+  font-size: 24rpx;
+  color: #7f8c8d;
+  max-width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.load-more {
+  text-align: center;
+  margin-top: 40rpx;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 200rpx 40rpx;
+  color: #95a5a6;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 40rpx;
+  color: #95a5a6;
+}
+
+.loading-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.loading-text {
+  font-size: 32rpx;
+}

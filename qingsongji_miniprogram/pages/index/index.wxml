@@ -1,0 +1,79 @@
+<!-- 记账页面 -->
+<view class="container">
+  <!-- 收入支出切换 -->
+  <view class="card mb-20">
+    <view class="flex justify-between align-center">
+      <view class="tab {{type === 'expense' ? 'active' : ''}}" data-type="expense" bindtap="switchType">
+        <text>支出</text>
+      </view>
+      <view class="tab {{type === 'income' ? 'active' : ''}}" data-type="income" bindtap="switchType">
+        <text>收入</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 金额输入 -->
+  <view class="card mb-20">
+    <view class="text-center mb-20">
+      <text class="subtitle">请输入金额</text>
+      <view class="amount-container">
+        <text class="currency">¥</text>
+        <input class="amount-input" type="digit" value="{{amount}}" bindinput="onAmountInput" placeholder="0.00" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类选择 -->
+  <view class="card mb-20" wx:if="{{amount}}">
+    <text class="subtitle">选择分类</text>
+    <view class="category-grid">
+      <view class="category-item {{category === item.id ? 'active' : ''}}" 
+            wx:for="{{categoryList}}" 
+            wx:key="id"
+            data-category="{{item.id}}"
+            bindtap="selectCategory">
+        <text class="category-icon">{{item.icon}}</text>
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 其他信息 -->
+  <view class="card mb-20" wx:if="{{category}}">
+    <view class="form-item">
+      <text class="label">账户</text>
+      <picker bindchange="onAccountChange" value="{{accountIndex}}" range="{{accountList}}" range-key="name">
+        <view class="picker">
+          {{accountList[accountIndex].name}}
+          <i class="fas fa-chevron-right"></i>
+        </view>
+      </picker>
+    </view>
+    
+    <view class="divider"></view>
+    
+    <view class="form-item">
+      <text class="label">日期</text>
+      <picker mode="date" value="{{date}}" bindchange="onDateChange">
+        <view class="picker">
+          {{date}}
+          <i class="fas fa-chevron-right"></i>
+        </view>
+      </picker>
+    </view>
+    
+    <view class="divider"></view>
+    
+    <view class="form-item">
+      <text class="label">备注</text>
+      <input class="note-input flex-1" type="text" value="{{note}}" bindinput="onNoteInput" placeholder="添加备注（可选）" />
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="mt-20" wx:if="{{category}}">
+    <button class="btn btn-primary" bindtap="saveBill" loading="{{isSubmitting}}" disabled="{{isSubmitting}}">
+      保存记录
+    </button>
+  </view>
+</view>

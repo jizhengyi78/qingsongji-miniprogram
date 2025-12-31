@@ -1,0 +1,123 @@
+/* 记账页面样式 */
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 30rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #7f8c8d;
+  border-radius: 12rpx;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 25rpx rgba(102, 126, 234, 0.3);
+}
+
+.amount-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.currency {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: #667eea;
+  margin-right: 10rpx;
+}
+
+.amount-input {
+  font-size: 80rpx;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  border: none;
+  background: transparent;
+  width: 400rpx;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+  margin-top: 30rpx;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  border-radius: 16rpx;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  border: 3rpx solid transparent;
+}
+
+.category-item.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8rpx 25rpx rgba(102, 126, 234, 0.3);
+}
+
+.category-icon {
+  font-size: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+.category-name {
+  font-size: 24rpx;
+  text-align: center;
+  font-weight: 500;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+}
+
+.label {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.picker {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  color: #7f8c8d;
+}
+
+.picker .fa-chevron-right {
+  margin-left: 15rpx;
+  font-size: 24rpx;
+}
+
+.note-input {
+  text-align: right;
+  font-size: 32rpx;
+  color: #2c3e50;
+  border: none;
+  background: transparent;
+}
+
+.note-input::placeholder {
+  color: #bdc3c7;
+}
+
+.divider {
+  height: 2rpx;
+  background: #ecf0f1;
+  margin: 0;
+}

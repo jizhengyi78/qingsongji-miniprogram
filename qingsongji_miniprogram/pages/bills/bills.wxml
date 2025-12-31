@@ -1,0 +1,69 @@
+<!-- 账单页面 -->
+<view class="container">
+  <!-- 搜索和筛选 -->
+  <view class="card mb-20">
+    <view class="search-bar">
+      <i class="fas fa-search search-icon"></i>
+      <input class="search-input" placeholder="搜索备注..." bindinput="onSearchInput" value="{{searchText}}" />
+    </view>
+    <view class="filter-tabs mt-20">
+      <view class="filter-tab {{filterType === 'all' ? 'active' : ''}}" data-type="all" bindtap="switchFilter">全部</view>
+      <view class="filter-tab {{filterType === 'expense' ? 'active' : ''}}" data-type="expense" bindtap="switchFilter">支出</view>
+      <view class="filter-tab {{filterType === 'income' ? 'active' : ''}}" data-type="income" bindtap="switchFilter">收入</view>
+    </view>
+  </view>
+
+  <!-- 月度汇总 -->
+  <view class="card mb-20" wx:if="{{summary.total > 0}}">
+    <view class="summary-grid">
+      <view class="summary-item">
+        <text class="summary-label">本月收入</text>
+        <text class="summary-value income">¥{{summary.income.toFixed(2)}}</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">本月支出</text>
+        <text class="summary-value expense">¥{{summary.expense.toFixed(2)}}</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">本月结余</text>
+        <text class="summary-value {{summary.balance >= 0 ? 'income' : 'expense'}}">¥{{summary.balance.toFixed(2)}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 账单列表 -->
+  <view class="bill-list" wx:if="{{billList.length > 0}}">
+    <view class="bill-item" wx:for="{{billList}}" wx:key="_id" bindlongpress="showActions">
+      <view class="bill-icon">
+        <text>{{getCategoryIcon(item.category)}}</text>
+      </view>
+      <view class="bill-info flex-1">
+        <view class="bill-header">
+          <text class="bill-category">{{getCategoryName(item.category)}}</text>
+          <text class="bill-amount {{item.type}}">{{item.type === 'income' ? '+' : '-'}}¥{{item.amount.toFixed(2)}}</text>
+        </view>
+        <view class="bill-footer">
+          <text class="bill-date">{{formatDate(item.date)}}</text>
+          <text class="bill-account" wx:if="{{item.note}}">{{item.note}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载更多 -->
+    <view class="load-more" wx:if="{{hasMore}}">
+      <button class="btn btn-secondary" bindtap="loadMore" loading="{{isLoading}}">加载更多</button>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{billList.length === 0 && !isLoading}}">
+    <i class="fas fa-receipt empty-icon"></i>
+    <text class="empty-text">暂无账单记录\n快去记一笔吧~</text>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{isLoading}}">
+    <i class="fas fa-spinner fa-spin loading-icon"></i>
+    <text class="loading-text">加载中...</text>
+  </view>
+</view>
